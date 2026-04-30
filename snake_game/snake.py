@@ -26,7 +26,7 @@ def submit_score(name, score):
     try:
         data = {"name": name, "score": score}
         response = requests.post(f"{SERVER_URL}/highscores", json=data, timeout=2)
-        return response.status_code == 200
+        return response.status_code == 201
     except Exception:
         return False
 
