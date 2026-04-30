@@ -197,8 +197,18 @@ def main(stdscr):
 
         if score > 0:
             name = ask_name(stdscr)
-            if name:
-                submitted = submit_score(name, score)
+
+        while not name:
+            stdscr.clear()
+            h, w = stdscr.getmaxyx()
+            msg = "Du må skrive inn et navn for å gå videre"
+            stdscr.addstr(h // 2, (w - len(msg)) // 2, msg)
+            stdscr.addstr(h // 2 + 1, (w - 28) // 2, "Trykk en tast for å prøve igjen")
+            stdscr.refresh()
+            stdscr.getch()
+            name = ask_name(stdscr)
+
+        submitted = submit_score(name, score)
 
         # Show updated highscores
         scores = get_highscores()
