@@ -157,7 +157,8 @@ def game_loop(win):
         new_head = (head_y + direction[0], head_x + direction[1])
 
         # Check wall collision
-        if new_head[0] < 1 or new_head[0] >= HEIGHT or new_head[1] < 1 or new_head[1] >= WIDTH:
+        h, w = win.getmaxyx()
+        if new_head[0] <= 0 or new_head[0] >= h - 1 or new_head[1] <= 0 or new_head[1] >= w - 1:
             return score, False, "crashed into a wall"
 
         # Check self collision
