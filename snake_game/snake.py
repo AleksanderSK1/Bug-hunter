@@ -8,7 +8,7 @@ import requests
 
 SERVER_URL = "http://localhost:5000"
 
-# Game settings
+# Game settingss
 WIDTH = 40
 HEIGHT = 20
 INITIAL_SPEED = 0.15
@@ -172,11 +172,10 @@ def game_loop(win):
             food = spawn_food(snake)
             if speed > 0.05:
                 speed -= 0.002
-            win.clear()
         else:
             snake.pop()
 
-        # Draw everything
+        win.clear()
         draw_border(win)
         draw_snake(win, snake)
         draw_food(win, food)
